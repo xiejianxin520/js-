@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function foo() {
+    //   console.log(this); 
+    //   console.log(this.a);
+    // }
+
+    // function doFoo(fn) {
+    //   this.a = 4;
+    //   fn()
+    // }
+    // var obj = {
+    //   a: 2,
+    //   foo: foo
+    // }
+
+    // var a = 3;
+
+    // obj.foo()//obj,2
+    // doFoo(obj.foo) //window,4
+
+    //=============-----------------************===============================-
+    // function foo() {
+    //   setTimeout(() => {
+    //     console.log(this);
+    //     this.a = 1
+    //   }, 0);
+    //   console.log(this.a);
+    // }
+
+
+    // var a = 3;
+
+    // foo() //3
+
+    //------------------
+    // var x = 11
+    // var obj = {
+    //   x: 22,
+    //   say: () => {
+    //     console.log(this);
+    //     console.log(this.x);
+    //   }
+    // }
+    var x = 11
+
+    function fn() {
+      var x = 22
+      var obj = {
+        x: 22,
+        say: () => {
+          console.log(this);
+          console.log(this.x);
+        }
+      }
+      obj.say()
+    }
+
+    fn()
+  </script>
+</body>
+
+</html>

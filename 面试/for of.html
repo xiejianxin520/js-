@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    Array.prototype.method = function () {}
+    var myArray = [1, 2, 4];
+    myArray.name = "name";
+
+    console.log(myArray);
+
+    for (var index in myArray)
+      console.log(myArray[index]); //1,2,4,method,name
+
+    for (var value of myArray)
+      console.log(value); //1,2,4
+    console.log(myArray);
+  </script>
+</body>
+
+</html>

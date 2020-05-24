@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    console.log(g); //报错
+
+    console.log(a); //undefined
+    var a = 3; //要有var定义
+
+    console.log(w); //报错，w is not defined
+    w = 6;
+
+    // fn1() //报错，fn不是一个函数。。因为函数赋值给变量。变量提升
+    var fn1 = function () {
+      console.log('是否会执行');
+    }
+
+
+    var b = 3
+
+    function fn3() {
+      console.log(b); //3
+      b = 7
+      console.log(b); //7
+    }
+    fn3()
+    console.log(b); //7
+
+
+    var e = 1
+    if (true) {
+      console.log(e); //1，这是js没有块级作用域
+      var e = 3
+      console.log(e); //3
+    }
+    console.log(e); //3
+
+    //如果函数与变量声明同名时候，函数声明优先级高于变量优先级，变量就不会提升
+    console.log(fn); //fuction
+    function fn() {}
+    console.log(fn); //fuction
+    var fn = "变量"
+
+    console.log(fn5); //fuction
+    function fn5() {}
+    var fn5 = "变量"
+    console.log(fn5); //变量
+
+    // 函数提升优先级比变量提升要高，且不会被变量声明覆盖，但是会被变量赋值覆盖。
+    function d() {}
+    var d;
+    console.log(typeof d) //"function"  
+
+
+
+
+    var getname = function () {
+      console.log(1);
+    }
+
+    function getname() {
+      console.log(2);
+    }
+    getname() //1 先函数提升后，变量提升，两句顺序颠倒
+
+    // 函数提升优先级比变量提升要高，且不会被变量声明覆盖，但是会被变量赋值覆盖。
+
+    //有形参的时候函数提升,先执行参数传入形参，在函数提升，先var age= 3,再var age =funtcion
+    function t1(age) {
+      var age = function age() {
+        console.log(age);
+      }
+      console.log(age);
+      age()
+      console.log(age);
+    }
+
+    t1(23) //输出三句function age() { console.log(age); }
+
+    // var c = 1;
+
+    // function c(c) {
+    //   console.log(c);
+    // }
+    // c(2) //报错
+
+
+
+    //函数提升优先级比变量提升要高，且不会被变量声明覆盖，但是会被变量赋值覆盖
+    var g = 3;
+
+    function g() {}
+
+    console.log(g); //3
+  </script>
+</body>
+
+</html>

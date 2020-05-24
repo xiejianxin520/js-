@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function deteleObject(obj) {
+      var uniques = [];
+      var stringify = {};
+      for (var i = 0; i < obj.length; i++) {
+        var keys = Object.keys(obj[i]);
+        var str = '';
+        for (var j = 0; j < keys.length; j++) {
+          str += JSON.stringify(keys[j]);
+          str += JSON.stringify(obj[i][keys[j]]);
+        }
+        // console.log(str);//"name""1""url""1u"
+        if (!stringify.hasOwnProperty(str)) {
+          uniques.push(obj[i]);
+          stringify[str] = true;
+        }
+      }
+      uniques = uniques;
+      return uniques;
+    }
+
+    let obj = [{
+        name: '1',
+        url: '1u',
+      },
+      {
+        name: '1',
+        url: '1r',
+      },
+      {
+        name: '2',
+        url: '1u',
+      },
+      {
+        name: '1',
+        url: '1u',
+      },
+    ]
+
+    // console.log(deteleObject(obj))
+    // [{"name": "1","url": "1u"},{"name": "1","url": "1r"},{"name": "2","url": "1u"}]
+
+    var ary = [{
+        id: 1
+      },
+      {
+        id: 3
+      },
+      {
+        id: 3
+      },
+      {
+        id: 5
+      },
+      {
+        id: 5
+      },
+      {
+        id: 7
+      },
+      {
+        id: 9
+      },
+    ]
+    let news = []
+    ary.forEach((item) => {
+      item = JSON.stringify(item)
+      if (!news.includes(item)) {
+        news.push(item)
+      }
+    })
+
+    let a = news.map(item => JSON.parse(item))
+    console.log(a)
+  </script>
+</body>
+
+</html>

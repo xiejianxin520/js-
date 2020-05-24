@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //浅拷贝
+    //浅拷贝是创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。如果属性值是基本类型，那就拷贝的就是基本类型的值
+    //如果属性是引用类型，拷贝的就是内存地址。所以其中一个对象改变了这个地址，就会影响另一个对象。
+    //1. Array.prototype.slice.call(a);
+
+    //2.Object.assign(target, ...sources)
+
+    //3.Array.prototype.concat(数组)
+
+    //4.var cloneObj = { ...obj };
+
+    //5终极版
+
+    function qianClone(target) {
+      var newobj = {}
+      for (var key in target) {
+        if (Object.prototype.hasOwnProperty.call(target, key))
+          newobj[key] = target[key]
+      }
+      return newobj
+    }
+
+
+
+    const target = {
+      field1: 1,
+      field2: undefined,
+      field3: 'ConardLi',
+      field4: {
+        child: 'child',
+        child2: {
+          child2: 'child2',
+          ddd: [5, 5, 6, 9, 8]
+        }
+      }
+    };
+
+
+    var a = qianClone(target)
+    target.field4.child = 'dasda'
+    console.log(a);
+
+
+    //深拷贝
+    //深拷贝会另外拷贝一份一个一模一样的对象
+    //从堆内存中开辟一个新的区域存放新对象,新对象跟原对象不共享内存，修改新对象不会改到原对象。
+
+
+    //JSON.parse(JSON.stringify())
+
+    //如果是深拷贝的话，考虑到我们要拷贝的对象是不知道有多少层深度的，我们可以用递归来解决问题，稍微改写上面的代码：
+
+    //如果是原始类型，无需继续拷贝，直接返回
+    //如果是引用类型，创建一个新的对象，遍历需要克隆的对象，将需要克隆对象的属性执行深拷贝后依次添加到新对象上。
+
+    //检测类型
+    function checkedType(target) {
+      return Object.prototype.toString.call(target).slice(8, -1)
+    }
+    console.log(checkedType(Date));
+
+    function clone(target) {
+      if (typeof target === 'object') {
+        let cloneTarget = Array.isArray(target) ? [] : {};
+        for (const key in target) {
+          cloneTarget[key] = clone(target[key])
+        }
+        return cloneTarget;
+      } else {
+        return target;
+      }
+    }
+
+
+
+    定义检测数据类型的功能函数
+
+    function isObject(obj) {
+      return typeof obj === 'object' && obj != null;
+    }
+
+    function cloneDeep(source) {
+      if (!isObject(source)) return source; // 非对象返回自身
+
+      var target = Array.isArray(source) ? [] : {}; //判断源对象为数组或对象
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          if (isObject(source[key])) {
+            target[key] = cloneDeep(source[key]); // 注意这里
+          } else {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    }
+
+
+    var obj1 = {
+      a: 1,
+      b: {
+        f: {
+          g: 1
+        }
+      },
+      c: [1, 2, 3],
+      fun: function () {
+        return 8
+      }
+    };
+
+
+    var b = cloneDeep(obj1)
+    console.log(b);
+    obj1.b.f.g = 6
+    console.log(b);
+  </script>
+</body>
+
+</html>

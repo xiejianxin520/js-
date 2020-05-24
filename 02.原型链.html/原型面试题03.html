@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function foo() {
+      foo.a = function () {
+        console.log(1)
+      }
+
+      this.a = function () {
+        console.log(2)
+      }
+
+      a = function () {
+        console.log(3)
+      }
+
+      var a = function () {
+        console.log(4)
+      }
+    }
+
+    foo.a = function () {
+      console.log(6)
+    }
+
+    var obj = new foo();
+
+    foo.a() //1
+
+    //     解析
+    // function foo() {} 定义全局变量foo
+    // foo.a = function(){} 给全局变量foo的a属性赋值
+    // var obj = new foo();构造函数调用foo
+    // 进入foo函数：
+    // foo.a=function(){}给全局变量foo的a属性覆盖操作
+    // this.a=function(){}因为用了new关键字 this指向obj所以这句话是obj.a=...
+    // 下面两句要一起看
+    // a = function(){}本来这句没有var是默认全局变量
+    // var a = function(){}但是这一句用了var导致变量声明提前所以上面一句的a也变成了局部变量这一句覆盖了a
+  </script>
+</body>
+
+</html>

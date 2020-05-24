@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Fn(name) {
+      this.name = name
+      this.write = function () {
+        console.log('bh');
+      }
+    }
+    Fn()
+
+    Fn.prototype.text = function () {
+      console.log('你好');
+    }
+
+    var a = new Fn('xjx')
+    var b = new Fn('ke')
+    console.log(Fn.prototype); //空的Object实例对象
+    console.log(Fn.prototype.__proto__); //空的Object实例对象的（包含的方法的toString）
+    console.log(Fn.prototype.__proto__.__proto__); //null
+    ///
+    console.log(a.__proto__);
+    console.log(a);
+    console.log('---------------');
+    console.log(Fn.prototype.__proto__ === Object.prototype); //true
+    console.log(Object.__proto__ === Function.prototype); //true
+    console.log(Function.prototype === Function.__proto__); //true
+    console.log(Object.__proto__ === Function.__proto__); //true
+  </script>
+</body>
+
+</html>

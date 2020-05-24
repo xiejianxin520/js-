@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //   2. 判断
+    // * typeof:
+    //   * 可以区别: 数值, 字符串, 布尔值, undefined, function
+    //   * 不能区别: null与对象, 对象与数组
+
+    var a = function () {
+      console.log('ss');
+    }
+
+    console.log(typeof (a)); //"function"
+
+    var b = []
+    console.log(typeof b); //"object"
+
+    console.log(typeof (undefind) === undefined); //false，，typeof返回字符串
+
+    function Person(name, age) {
+      this.name = name
+      this.age = age
+    }
+
+    Person('kb', 18)
+
+
+    //在JS调用函数时传递变量参数，可以是值的传递，也可能是引用传递（地址值）
+
+    var c = 3
+
+    function fn(c) {
+      c = c + 1
+      console.log(c); //4
+    }
+    fn(c)
+    console.log(c); //3
+
+    function fuc() {
+      var a = {
+        name: 'xjx'
+      }
+      b = 4
+    }
+    fuc()
+
+    // function f2(a) {
+    //   a.name = 'atguigu'
+    // }
+    // n = {}
+    // f2(n) // 传递的是n指向的对象 ---> 引用传递   ???
+    // console.log(n.name)
+  </script>
+  </script>
+</body>
+
+</html>

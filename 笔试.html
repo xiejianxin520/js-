@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //把[{a:1},{b:2},{c:3}]变成[{a:1,b:2,c:3}]
+
+    var ary = [{
+        a: 1,
+      },
+      {
+        b: 2,
+      },
+      {
+        c: 3,
+      },
+    ]
+
+    ary.reduce((obj, current) => {
+      obj[Object.keys(current)[0]] = Object.values(current)[0]
+      return obj //reduce如果添加初始值必须返回
+    }, {})
+    console.log(ary)
+
+
+
+    // let news = {}
+    // obj.forEach(item => {
+    //   news[Object.keys(item)[0]] = Object.values(item)[0]
+    // })
+    // console.log(news);
+
+
+    // let news = [{}]
+    // for (var i = 0; i < obj.length; i++) {
+    //   for (var j in obj[i]) {
+    //     news[0][j] = obj[i][j]
+    //   }
+    // }
+    // console.log(news)
+  </script>
+</body>
+
+</html>

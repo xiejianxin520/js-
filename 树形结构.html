@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var jsonarr = [{
+      id: 1,
+      name: '北京市',
+      ProSort: 1,
+      remark: '直辖市',
+      pid: '',
+      isEdit: false,
+      children: [{
+        id: 35,
+        name: '朝阳区',
+        pid: 1,
+        remark: '',
+        isEdit: false,
+        children: [{
+          id: 188,
+          name: '朝阳xiao区',
+        }]
+      }, {
+        id: 36,
+        name: '海淀区',
+        pid: 1,
+        remark: '',
+        isEdit: false,
+        children: [{
+          id: 189,
+          name: 'haidxiao区',
+        }]
+      }, {
+        id: 37,
+        name: '房山区',
+        pid: 1,
+        remark: '',
+        isEdit: false,
+        children: []
+      }, {
+        id: 38,
+        name: '丰台区',
+        pid: 1,
+        remark: '',
+        isEdit: false,
+        children: []
+      }]
+    }, {
+      id: 2,
+      name: '天津市',
+      ProSort: 2,
+      remark: '直辖市',
+      pid: '',
+      isEdit: false,
+      children: [{
+        id: 41,
+        name: '北辰区',
+        pid: 2,
+        remark: '',
+        isEdit: false,
+        children: [{
+          id: 113,
+          name: '天津大道',
+          ProSort: 2,
+          remark: '道路',
+          pid: '',
+          isEdit: false,
+          children: []
+        }]
+      }, {
+        id: 42,
+        name: '河北区',
+        pid: 2,
+        remark: '',
+        isEdit: false,
+        children: []
+      }, {
+        id: 43,
+        name: '西青区',
+        pid: 2,
+        remark: '',
+        isEdit: false,
+        children: []
+      }]
+    }, {
+      id: 3,
+      name: '河北省',
+      ProSort: 5,
+      remark: '省份',
+      pid: '',
+      isEdit: false,
+      children: [{
+        id: 45,
+        name: '衡水市',
+        pid: 3,
+        remark: '',
+        isEdit: false,
+        children: []
+      }, {
+        id: 46,
+        name: '张家口市',
+        pid: 3,
+        remark: '',
+        isEdit: false,
+        children: []
+      }]
+    }]
+
+    const treeObj = [{
+      id: '0',
+      name: '0',
+      children: [{
+          id: '1',
+          name: 'anc',
+          children: [{
+              id: '1-1',
+              name: 'anc',
+              children: [{
+                  id: '1-1-1',
+                  name: 'anc',
+                },
+                {
+                  id: '1-1-2',
+                  name: 'anc'
+                },
+              ]
+            },
+            {
+              id: '1-2',
+              name: 'anc',
+              children: [{
+                  id: '1-2-1',
+                  name: 'anc',
+                },
+                {
+                  id: '1-2-2',
+                  name: 'anc'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          id: '2',
+          name: 'anc',
+          children: [{
+              id: '2-1',
+              name: 'anc',
+              children: [{
+                  id: '2-1-1',
+                  name: 'anc',
+                },
+                {
+                  id: '2-1-2',
+                  name: 'anc'
+                },
+              ]
+            },
+            {
+              id: '2-2',
+              name: 'anc',
+              children: [{
+                  id: '2-2-1',
+                  name: 'anc',
+                  children: [{
+                      id: '2-2-1-1',
+                      name: 'anc',
+                    },
+                    {
+                      id: '2-2-1-2',
+                      name: 'anc'
+                    },
+                  ]
+                },
+                {
+                  id: '2-2-2',
+                  name: 'anc'
+                },
+              ]
+            },
+            {
+              id: '2-3',
+              name: 'anc',
+              children: [{
+                  id: '2-3-1',
+                  name: 'anc',
+                },
+                {
+                  id: '2-3-2',
+                  name: 'anc'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          id: '3',
+          name: 'anc',
+          children: []
+        }
+      ]
+    }];
+    // 树形结构数据转单层数组形式
+    function jsonToArray(nodes) {
+      var r = [];
+      if (Array.isArray(nodes)) {
+        for (var i = 0, l = nodes.length; i < l; i++) {
+          r.push(nodes[i]); // 取每项数据放入一个新数组
+          if (Array.isArray(nodes[i]["children"]) && nodes[i]["children"].length > 0)
+            // 若存在children则递归调用，把数据拼接到新数组中，并且删除该children
+            r = r.concat(jsonToArray(nodes[i]["children"]));
+          delete nodes[i]["children"]
+        }
+      }
+      return r;
+    }
+    //为了不破坏原数据，我们需要对操作的数据进行深拷贝：
+
+    // 深拷贝
+    function deepCopy(obj) {
+      var object;
+      // 深度复制数组
+      if (Object.prototype.toString.call(obj) == "[object Array]") {
+        object = [];
+        for (var i = 0; i < obj.length; i++) {
+          object.push(deepCopy(obj[i]))
+        }
+        return object
+      }
+      // 深度复制对象
+      if (Object.prototype.toString.call(obj) == "[object Object]") {
+        object = {};
+        for (var p in obj) {
+          object[p] = obj[p]
+        }
+        return object
+      }
+    }
+
+    var copydata = deepCopy(treeObj)
+    var bb = jsonToArray(copydata)
+    console.log('json转数组', bb)
+  </script>
+</body>
+
+</html>

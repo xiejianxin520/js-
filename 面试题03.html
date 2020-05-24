@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  #id {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+  }
+</style>
+
+<body>
+
+
+  <script>
+    // var c = 1;
+
+    // function c(c) {
+    //   console.log(c);
+    //   var c = 3
+    // }
+    // c(2)
+
+
+    var name = "world";
+    (function () {
+      if (typeof name === "undefined") {
+        var name = "jack"
+        console.log("goobe" + name);
+      } else {
+        console.log("hello" + name);
+      }
+    })()
+  </script>
+</body>
+
+</html>

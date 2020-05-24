@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // const treeObj = [{
+    //   id: '0',
+    //   name: '0',
+    //   children: [{
+    //       id: '1',
+    //       name: 'anc',
+    //       children: [{
+    //           id: '1-1',
+    //           name: 'anc',
+    //           children: [{
+    //               id: '1-1-1',
+    //               name: 'anc',
+    //             },
+    //             {
+    //               id: '1-1-2',
+    //               name: 'anc'
+    //             },
+    //           ]
+    //         },
+    //         {
+    //           id: '1-2',
+    //           name: 'anc',
+    //           children: [{
+    //               id: '1-2-1',
+    //               name: 'anc',
+    //             },
+    //             {
+    //               id: '1-2-2',
+    //               name: 'anc'
+    //             },
+    //           ]
+    //         },
+    //       ]
+    //     },
+    //     {
+    //       id: '2',
+    //       name: 'anc',
+    //       children: [{
+    //           id: '2-1',
+    //           name: 'anc',
+    //           children: [{
+    //               id: '2-1-1',
+    //               name: 'anc',
+    //             },
+    //             {
+    //               id: '2-1-2',
+    //               name: 'anc'
+    //             },
+    //           ]
+    //         },
+    //         {
+    //           id: '2-2',
+    //           name: 'anc',
+    //           children: [{
+    //               id: '2-2-1',
+    //               name: 'anc',
+    //               children: [{
+    //                   id: '2-2-1-1',
+    //                   name: 'anc',
+    //                 },
+    //                 {
+    //                   id: '2-2-1-2',
+    //                   name: 'anc'
+    //                 },
+    //               ]
+    //             },
+    //             {
+    //               id: '2-2-2',
+    //               name: 'anc'
+    //             },
+    //           ]
+    //         },
+    //         {
+    //           id: '2-3',
+    //           name: 'anc',
+    //           children: [{
+    //               id: '2-3-1',
+    //               name: 'anc',
+    //             },
+    //             {
+    //               id: '2-3-2',
+    //               name: 'anc'
+    //             },
+    //           ]
+    //         },
+    //       ]
+    //     },
+    //     {
+    //       id: '3',
+    //       name: 'anc',
+    //       children: []
+    //     }
+    //   ]
+    // }];
+
+    const data = [{
+        id: 1,
+        children: [{
+          id: 2,
+          children: [{
+            id: 3,
+          }, {
+            id: 4,
+          }],
+        }],
+      },
+      {
+        id: 5,
+        children: [{
+          id: 6,
+          children: [{
+            id: 7,
+          }, {
+            id: 8,
+          }],
+        }],
+      }
+    ];
+
+    let nodes = [];
+
+    function getParentNodes(id, tree) {
+      _getParentNodes([], id, tree);
+      return nodes;
+    }
+
+    function _getParentNodes(his, targetId, tree) {
+      tree.some((item) => {
+        const children = item.children || [];
+        if (item.id === targetId) {
+          nodes = his;
+          return true;
+        } else if (children.length > 0) {
+          const history = [...his];
+          history.push(item);
+          console.log(item.id, history);
+          //Object.assign() 
+          return _getParentNodes(history, targetId, children);
+        }
+      })
+    }
+    var a = getParentNodes(8, data)
+    console.log(a);
+    //需要三个参数，空数组，id,树形数组
+    //见一个空数组来存储每次深度遍历的记录，用some循环他的每一项的.第一个判断当前的id是要找到id,,赋值接受数组，返回ture
+    //第二判断是否有子集，有子集就把当前的父节点储存，把这个存储了数组的参数和他子集数组穿进去，再递归这方法，
+
+    //传入参数：需要遍历的json，需要匹配的id
+    // findPnodeId(data, nodeId) {
+    //   //设置结果
+    //   let result;
+    //   for (var i = 0; i < data.children.length; i++) {
+    //     let item = data.children[i];
+    //     if (item.nodeId == nodeId) {
+    //       result = data.nodeId;
+    //       //找到id相等的则返回父id
+    //       return result;
+    //     } else if (item.children && item.children.length > 0) {
+    //       //如果有子集，则把子集作为参数重新执行本方法
+    //       result = findPnodeId(item, nodeId);
+    //       //关键，千万不要直接return本方法，不然即使没有返回值也会将返回return，导致最外层循环中断，直接返回undefined,要有返回值才return才对
+    //       if (result) {
+    //         return result;
+    //       }
+    //     }
+    //   }
+    //   //如果执行循环中都没有return，则在此return
+    //   return result;
+    // }
+  </script>
+</body>
+
+</html>

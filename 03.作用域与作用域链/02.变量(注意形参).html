@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var a = 123;
+
+    function fun() {
+      console.log('1222' + a); //函数被重复，输出不了
+    }
+
+
+    fun()
+
+    function fun(e) {
+      console.log(e); //undefined
+      e = 456;
+    }
+    fun()
+
+
+    var b = 23
+
+    function fn() {
+      console.log(b);
+    }
+    fn()
+  </script>
+</body>
+
+</html>

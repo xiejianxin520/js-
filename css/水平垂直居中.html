@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /*第一种 绝对定位+transform反向偏移 */
+    /* #fuqin {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      background-color: greenyellow;
+    }
+
+    #son {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    } */
+
+    /*第二种 flex布局 */
+    /* #fuqin {
+
+      width: 800px;
+      height: 600px;
+      background-color: greenyellow;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #son {
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+
+    } */
+    /* 第三种，div使用绝对布局，设置margin:auto;并设置top、left、right、bottom的值相等即可，不一定要都是0。 HTML部分 */
+    /* #fuqin {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      background-color: greenyellow;
+    }
+
+    #son {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    } */
+    #fuqin {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      background-color: greenyellow;
+    }
+
+    #son {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+      left: 50%;
+      margin-left: -100px;
+      top: 50%;
+      margin-top: -100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="fuqin">
+    <div id="son">
+    </div>
+  </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //*******会改变原数组的
+    //
+    // 1.splice(根据下标进行删除，添加)(第一个下标，第二个终止目标（不包含），要添加的项)
+    // 2.sort(从小到大排序)
+    // 3.push （末尾添加）
+    // 4.pop(末尾删除)
+    // 5.unshift(开头添加)
+    // 6.shift(开头删除)
+    // 7.reverse(反转)
+    // 8.copyWithin(指定位置成员复制到其他位置)
+    //9.fill(填充数组)
+
+
+
+    // 1.splice(根据下标进行删除，添加)(第一个下标，第二个终止目标（不包含），要添加的项)
+    let arr = [0, 5, 8, 7, 4]
+    arr.splice(0, 1)
+    console.log(arr); //[5,8,7,4]
+    arr.splice(0, 2, 1)
+    console.log(arr); //[1,7,4]
+
+    // 2.sort(从小到大排序) a-b升序从小到大
+    let arr1 = [0, 5, 8, 7, 4]
+    arr1.sort(function (a, b) {
+      return a - b;
+    })
+    //  arr1.sort((a, b) => a - b)
+    console.log(arr1);
+
+
+    //********不改变原数组的
+    //1.join()数组转字符串 比如join("+")
+    //2.split 字符串转为数组
+    //3.slice 字符串和数组的截取，
+    //4.cancat 合并两个数组
+    //5....扩展运算符
+    //6.indexOf查找是否含有，如含有则返回第一次的索引，没有则返回-1
+    //7.includes，可以检查是否含有，返回布尔值，可以识别NaN
+    //8.forEach 遍历，一般需要建立新的空数组，然后push进去，他的返回值一直都是undefind
+    //9.map 遍历，返回新数组
+    //10.every（且，所有） 检查所有符合的元素，如有一个不符合，则返回false
+    //11.some（或，有一个）有一个符合 就好，就返回true,剩余不再检查
+    //12.filter，过滤，返回新数组
+    //13.find,找到符合元素，就不会再往下找了，返回符合的元素
+    //14 ()找到符合元素的下标，返回符合下标，也不会再往下找
+    //15.reduce为数组提供累加器
+    //16.keys(),values(),entries()，遍历键名，键值，遍历键名+键值
+
+
+    console.log('-------------');
+    //1.join()数组转字符串 比如join(",") 
+    let array1 = [5, 8, 9, 8, 7]
+    let newstr = array1.join('+')
+    console.log(newstr); //5+8+9+8+7
+    console.log(array1); // [5, 8, 9, 8, 7]
+
+    //2.split 字符串转为数组
+    let str = "ni hao str"
+    let newary = str.split(" ", 3) //注意是空格，如果没空格就一个个字母截取
+    console.log(newary); // ["ni", "hao", "str"]
+    console.log(str); //"ni hao str"
+
+    //2.slice  
+    let xjx = str.slice(0, 4)
+    console.log('xjx' + xjx);
+
+    let arr2 = [0, 5, 8, 7, 4]
+    let news = [];
+    arr2.forEach(item => {
+      if (item >= 5) {
+        news.push(item)
+      }
+    })
+    console.log(news);
+    console.log(arr2);
+
+    let new1 = arr2.filter(item => item <= 5)
+    console.log(new1);
+    console.log(arr2);
+
+    //15.reduce为数组提供累加器
+    let sum = arr2.reduce((a, b) => a + b)
+    console.log(sum);
+
+
+    //过滤
+    let arys = [2, 5, 5, 6, 8, 7, 9]
+    let newarys = arys.filter(item => item === 5)
+    console.log('ss', newarys);
+  </script>
+</body>
+
+</html>

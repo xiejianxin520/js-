@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //如果基本类型则与无返回值相同，实际返回其实例化对象
+    //. 若返回值是引用类型，则实际返回值为这个引用类型。。
+    function Foo(name) {
+      this.name = name
+      // return 520
+      return {
+        name: '引用类型被改变'
+      }
+    }
+    var f = new Foo('xjx')
+    console.log(f);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var b = 5
+
+    // function f2() {
+    //   var b = 3;
+    //   b = b + 1
+    //   console.log(b); //4
+    // }
+    // f2()
+    // console.log(b); //5
+
+    // console.log('-----------------------');
+    //------------------------------
+
+
+    // var a = 3
+
+    // function f1(b) {
+    //   b = b + 1
+    //   console.log(b); //4
+    //   console.log(this); //window
+    //   console.log(this.b); //undefind
+    // }
+    // f1(a)
+    // console.log(b); //报错
+
+    //------------------------------
+    var a = 3
+
+    function f1(a) {
+      a = a + 1
+      console.log(a); //4
+      console.log(this.a); //3
+    }
+    f1(a)
+    console.log(a); //3
+
+
+
+
+
+    function test(person) {
+      person.age = 26
+      person = {
+        name: 'yyy',
+        age: 30
+      }
+      return person
+    }
+    const p1 = {
+      name: 'xxx',
+      age: 25
+    }
+    const p2 = test(p1)
+    console.log(p1) // ->  {name:"xxx",age: 26}
+    console.log(p2) // ->  {name: "yyy",age:30}
+  </script>
+</body>
+
+</html>

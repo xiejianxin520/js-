@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <script type="text/javascript">
+    function a() {
+      a = 3
+      console.log(a);
+    }
+    a() //3
+
+
+    var f = function a() {
+      a = 3
+      console.log(a);
+    }
+    f() //f函数,具有名字的匿名函数，
+
+    // var f = function a() {
+    //   var a = 3
+    //   console.log(a);
+    // }
+    // f() //3
+
+    // var a = [1, 2, 3]
+    // a.join = a.shift
+    // if (a == 1 && a == 2 && a == 3) {
+    //   console.log('sss  ');
+    // }
+
+    var name = "Tom";
+    (function () {
+      // console.log(name); //undefind,
+      if (typeof name === "undefined") {
+        var name = "life" //变量提升，js没有块级作用域
+        console.log('good' + name);
+      } else {
+        var name = "xjx" //这里也会变量提升，js没有块级作用域
+        console.log("hello" + name);
+      }
+    })()
+    ///good' life
+
+
+    var a2 = 18;
+    (function () {
+      if (typeof a2 === "undefined") {
+        console.log("if" + a2);
+      } else {
+        console.log("else" + a2);
+      }
+
+    })()
+    //else18,,因为函数内部没有var
+  </script>
+</body>
+
+</html>

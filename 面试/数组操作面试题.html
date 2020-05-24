@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 这样一个URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e
+  请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:‘1’, b:‘2’, c:’’, d:‘xxx’, e:undefined} -->
+
+  <script>
+    // var url = "http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e";
+    // var itemArr = url.split('?')[1].split('&');
+    // console.log(itemArr); //['a=1','b=2']
+    // var jsonObj = {};
+    // for (i = 0; i < itemArr.length; i++) {
+    //   arr = itemArr[i].split('=')
+    //   console.log(arr);//["a", "1"]
+    //   jsonObj[arr[0]] = arr[1]
+    // }
+    // console.log(jsonObj);
+
+
+    //把下面的字符串去重，并去除掉特殊字符按照数字在前字母在后的顺序排序字符串，最终返回12345fdsarg
+    //charCodeAt
+    let str = '15559233fddfd&3434fdsaff&454545&4545444rfdsfds&545gdsgs';
+    let newStr = "";
+    for (let i = 0; i < str.length; i++) {
+      let s = str[i];
+      if (newStr.indexOf(s) == -1) {
+        newStr += s
+      }
+
+    }
+
+
+    let news = newStr.replace("&", "");
+
+
+    let numStr = "";
+    let charStr = ""
+
+    for (let i = 0; i < news.length; i++) {
+      if (news.charCodeAt(i) < 65) {
+        numStr += news[i]
+      } else {
+        charStr += news[i]
+      }
+    }
+
+    console.log(numStr);
+    let sortStr = numStr.split("").sort((a, b) => a - b).join()
+    console.log(sortStr);
+    let relustStr = sortStr + charStr
+    console.log(relustStr);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta name="viewport" content="width=640" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>面试题:xx</title>
+	<!-- 重构：面试者 | 创建：2019/09/27 -->
+	<script type="text/javascript" src="src/js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="src/js/jQueryRotate.2.2.js"></script>
+	<script type="text/javascript" src="src/js/script.js"></script>
+
+	<style type="text/css">
+		/*	reset示例 S*/
+		body,
+		dl,
+		dd,
+		ul,
+		ol,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		form,
+		header,
+		section,
+		article,
+		footer {
+			margin: 0;
+		}
+
+		body,
+		button,
+		input,
+		select,
+		textarea {
+			font: 12px/1.5 tahoma, '\5FAE\8F6F\96C5\9ED1', sans-serif
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-size: 100%
+		}
+
+		em,
+		b {
+			font-style: normal
+		}
+
+		a {
+			text-decoration: none
+		}
+
+		a:hover {
+			text-decoration: underline
+		}
+
+		img {
+			border: 0
+		}
+
+		body {
+			padding-top: 42px
+		}
+
+		button,
+		input,
+		select,
+		textarea {
+			font-size: 100%;
+			outline: none
+		}
+
+		table {
+			border-collapse: collapse;
+			border-spacing: 0
+		}
+
+		td,
+		th,
+		ul,
+		ol {
+			padding: 0
+		}
+
+		/*	reset示例 E*/
+
+		.wrap {
+			background-color: #fff;
+			text-align: center;
+			font-size: 16px;
+			line-height: 26px;
+		}
+
+		h1 {
+			font-weight: bold;
+			font-size: 30px;
+			line-height: 100px;
+		}
+
+		.rotate-con-pan {
+			background: url(src/img/bgc.png) no-repeat 0 0;
+			background-size: 100% 100%;
+			position: relative;
+			width: 900px;
+			height: 600px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			margin: 0 auto;
+
+		}
+
+		.rotate-con-zhen {
+			width: 215px;
+			height: 215px;
+			background: url(src/img/start.png) no-repeat 0 0;
+			cursor: pointer;
+			position: absolute;
+			left: 326px;
+			top: 240px;
+
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<h1>面试题目</h1>
+		<!-- 内容 s-->
+
+		<div class="rotate-con-pan">
+			<div class="rotate-con-zhen"></div>
+		</div>
+		<script type="text/javascript">
+			$(function () {
+				$(".rotate-con-zhen").rotate({
+					bind: {
+						click: function () {
+							var a = runzp();
+							$(this).rotate({
+								duration: 3000, //转动时间
+								angle: 0, //起始角度
+								animateTo: 1440 + a.angle, //结束的角度
+								easing: $.easing.easeOutSine, //动画效果，需加载jquery.easing.min.js
+								callback: function () {
+									alert(a.prize + a.message); //简单的弹出获奖信息
+								}
+							});
+						}
+					}
+				});
+			});
+		</script>
+		<!-- 内容 e-->
+	</div>
+
+
+</body>
+
+</html>

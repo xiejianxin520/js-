@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Fn(b) {
+      this.text = function () {
+        console.log('niha'); //这个函数是加在实例对象上上的
+      }
+    }
+    Fn.prototype.a = "1" //加在原型上
+    var f1 = new Fn()
+    console.log(f1.a, f1); //"加在原型上的变量1111"
+    var f2 = new Fn()
+    f2.a = '2' //这变量是加在Fn对象上的
+    console.log(f2.a, f2);
+    f2.__proto__.a = 3 //这个函数是加在Fn函数上的
+    console.log(f2.a, f2);
+    // console.log(typeof Fn);
+    console.log(Fn.prototype);
+    console.log(f2.__proto__ === f1.__proto__); //true'""
+  </script>
+</body>
+
+</html>

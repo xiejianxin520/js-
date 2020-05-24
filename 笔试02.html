@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var a = '000'
+
+
+
+
+    // function test() {
+    //   setTimeout(() => {
+    //     a = "123"
+    //   }, 0);
+    // }
+    function test() {
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          a = "123"
+          resolve(console.log(a))
+        }, 0);
+      })
+    }
+
+    // function test(callback) {
+    //   setTimeout(() => {
+    //     a = '123'
+    //     callback(a)
+    //   }, 0)
+    // }
+    // test((data) => {
+    //   console.log(data);
+    // });
+    test()
+  </script>
+</body>
+
+</html>

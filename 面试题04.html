@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var a = 3;
+
+    // function fn(a) {
+    //   a = a + 1
+    //   console.log('局部的a为' + a);
+    // }
+    // fn(a)
+    // console.log(a);
+    // (function foo(param) {
+    //   foo = 1
+    //   console.log(foo); //输出函数foo
+
+    // })()
+
+
+    // let a = [];
+    // let b = [];
+    // let arr = [1, 2, 3]
+    // arr.forEach((item, index) => {
+    //   b.push(item)
+    //   if (index % 2 === 0) {
+    //     b = [];
+    //     a.push(b)
+    //   }
+    // });
+
+    // console.log(a);//[[2,3],[]]
+
+    // let a = [];
+    // let b = [];
+    // a.push(b)
+    // b.push(2, 3)
+    // b = []
+    // a.push(b)
+    // console.log(a);
+
+    //新面试题//
+    // var ary = [2, 7, 9, 11]
+    // let traget = 9;
+
+
+    function item(ary, target) {
+      let len = ary.length
+      let index = [];
+      for (var i = 0; i < len - 1; i++) {
+        for (var j = 1; j < len; j++) {
+          if (ary[i] + ary[j] == target) {
+            index[0] = ary[i]
+            index[1] = ary[j]
+          }
+        }
+      }
+      return index
+    }
+
+    var c = item([2, 14, 9, 11], 16)
+    console.log(c);
+  </script>
+</body>
+
+</html>

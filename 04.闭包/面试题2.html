@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      var str = '10'
+
+      function add() {
+        var str = '0'
+        return function () {
+          str += 1
+          console.log(str)
+        }
+      }
+
+      var s = add()
+      s() //01
+      s() //011
+
+      function reduce() {
+        var str = '0'
+        return function () {
+          str -= 1
+          console.log(str)
+        }
+      }
+      var r = reduce()
+      r() // -1
+      r() //-2
+    </script>
+  </body>
+</html>

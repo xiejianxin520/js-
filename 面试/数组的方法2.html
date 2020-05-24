@@ -1,0 +1,62 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+ </head>
+
+ <body>
+   <script>
+     // //判断一个对象object是否为数组
+     function isArray(obj) {
+       return Object.prototype.toString.call(obj)
+     }
+     var a = isArray({
+       name: 'xjx'
+     })
+     console.log(a); //[object Object]
+
+     function isAry(obj) {
+       return obj.__proto__ === Array.prototype
+     }
+     let b = isAry({
+       xjx: 13
+     })
+     console.log(b); //false
+
+     //数组去重
+     let arr3 = [0, 1, 1, 5, 6, 6, 77, 66]
+     let newarr3 = [...new Set(arr3)]
+     console.log(newarr3);
+
+     //第二种
+     let newarr4 = []
+
+     for (let value of arr3) {
+       if (!newarr4.includes(value)) {
+         newarr4.push(value)
+       }
+     }
+     console.log(newarr4);
+
+     //伪数组变成真数组
+     let preArr = {
+       length: '3',
+       '0': 'xjx',
+       '1': 13,
+       '2': '伪数组对象'
+     }
+     for (let i = 0; i < preArr.length; i++) {
+       console.log(preArr[i]);
+     }
+
+     let c = [].slice.call(preArr)
+     console.log(c);
+     console.log(preArr);
+   </script>
+ </body>
+
+ </html>

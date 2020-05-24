@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // for (var i = 0; i < 2; i++) {
+      //   (function (i) {
+      //     setTimeout(() => {
+      //       console.log(i);
+      //     }, 0);
+      //   })(i)
+      // }
+      // for (var i = 0; i < 2; i++) {
+      //   setTimeout(() => {
+      //     console.log(i);
+      //   }, 0);
+      // }
+
+      function a(xx) {
+        this.x = xx
+        return this
+      }
+      var x = a(5)
+      var y = a(6)
+      console.log(x.x)
+      undefined
+      console.log(y.x)
+    </script>
+  </body>
+</html>

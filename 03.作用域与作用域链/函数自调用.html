@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var a = 100;
+    // (function a() {
+    //   a = 200;
+    //   console.log(a)
+    // })();
+    // //立即执行函数IFEE的函数名只有可读性，内部赋值是无效的，
+    // // 输出结果：
+    // // ƒ a() {
+    // // a = 200;
+    // // console.log(a)
+    // // }
+
+    // (function a() {
+    //   var a = 200;
+    //   console.log(a)
+    // })();//200
+
+
+
+
+    var a = 10;
+    (function b() {
+    a = 200
+    console.log(a);
+    })()//200
+
+    var bb = 10;
+    (function (b) {
+      console.log(b);
+    })(bb); //10
+
+    function aa() {
+      aa = 222
+      console.log(aa);
+    }
+    aa() //222
+  </script>
+</body>
+
+</html>

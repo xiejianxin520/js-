@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var a = {
+      id: 1,
+      name: 2,
+      c: {
+        age: 3
+      }
+    };
+    var b = {
+      id: 1,
+      name: 2,
+      c: {
+        age: 5
+      }
+    }
+    //用Object.getOwnPropertyNames拿到对象的所有键名数组
+    function objcetqundeng(a, b) {
+      var aProps = Object.getOwnPropertyNames(a);
+      var bProps = Object.getOwnPropertyNames(b);
+
+      if (aProps.length != bProps.length) {
+        return false
+      }
+
+      for (var i = 0; i < aProps.length; i++) {
+        var akey = aProps[i];
+        var aValue = a[akey]
+        var bValue = b[akey]
+
+        if (typeof (aValue) === 'object') {
+          var jieguo = objcetqundeng(aValue, bValue)
+          if (jieguo) {
+            return true
+          } else {
+            return false
+          }
+        } else {
+          if (aValue !== bValue) {
+            return false
+          }
+        }
+
+      }
+      return true
+    }
+
+
+    var c = objcetqundeng(a, b)
+    console.log(c);
+  </script>
+</body>
+
+</html>

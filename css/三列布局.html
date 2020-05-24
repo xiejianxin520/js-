@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #left,
+    #right {
+      width: 200px;
+      height: 500px;
+      background: pink;
+    }
+
+    #left {
+      float: left;
+    }
+
+
+
+    #main {
+      background-color: green;
+      margin: 0 200px;
+      height: 500px;
+      min-width: 100px;
+    }
+
+    #right {
+      float: right;
+    }
+  </style>
+
+<body>
+  <div id="left">Left</div>
+  <div id="right">Right</div>
+  <div id="main">Center</div>
+  <!-- 浮动，主体要放在最后面 -->
+
+</body>
+
+</html>
+<!-- .main {
+      background: blue;
+      padding: 0 200px;
+      height: 100%;
+      /* //这一句一定要加，不然中间列的内容有一部分会被左边右边的列遮住，因为绝对定位 */
+    }
+    .left {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: green;
+      width: 200px;
+      height: 100%;
+    }
+    .right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: green;
+      width: 200px;
+      height: 100%;
+    } -->
+
+
+
+<!-- 参考地址：https://www.cnblogs.com/tynam/p/9827131.html -->

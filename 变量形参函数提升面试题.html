@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fn(a) {
+      console.log(a);
+
+      // function a() {};
+      var a = 3
+      console.log(a);
+    }
+    fn(1)
+    //形参不影响（覆盖）函数提升，变量提升影响
+
+    // function t1(b) {
+    //   console.log(b);
+    //   var b = function () {
+    //     console.log(b);
+    //   }
+    //   b()
+    //   console.log(b);
+    // }
+    // t1(5)
+  </script>
+</body>
+
+</html>

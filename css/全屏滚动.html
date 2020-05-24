@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>全屏滚动</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .bg {
+      transition: all 1s;
+    }
+
+    .span {
+      width: 50px;
+      height: 200px;
+      position: fixed;
+      top: 50%;
+      right: 100px;
+      margin-top: -100px;
+    }
+
+    .span p {
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border-radius: 40px;
+      margin: 5px;
+    }
+
+    .span .cur {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg">
+    <div class="box" style="background-color: lightblue;"></div>
+    <div class="box" style="background-color: lightcoral;"></div>
+    <div class="box" style="background-color: lightgreen;"></div>
+    <div class="box" style="background-color: darkolivegreen"></div>
+  </div>
+  <div class="span">
+    <p class="cur"></p>
+    <p></p>
+    <p></p>
+    <p></p>
+  </div>
+</body>
+<script type="text/javascript">
+  var box = document.querySelectorAll('.box');
+  var bg = document.querySelector('.bg');
+  var p = document.querySelectorAll('p');
+  var num = 0;
+  for (var x = 0; x < box.length; x++) //使每个块的宽和高都是当前浏览器可视区的宽和高
+  {
+    box[x].style.width = innerWidth + 'px';
+    box[x].style.height = innerHeight + 'px';
+  }
+  bg.style.width = 4 * innerWidth + 'px'; //此步骤必须存在，因为是所有的块整体移动
+  bg.style.height = 4 * innerHeight + 'px';
+  document.addEventListener('mousewheel', function (e) //鼠标滚轮事件
+    {
+      if (getDetail(e) < 0) //判断滚轮滚动方向
+      {
+        if (num < 3) {
+          num++;
+        }
+      } else {
+        if (num > 0) {
+          num--;
+        }
+      }
+      bg.style.marginTop = -innerHeight * num + 'px'; //缩进去
+      for (var y = 0; y < p.length; y++) {
+        p[y].className = '';
+      }
+      p[num].className = 'cur';
+    })
+  for (var i = 0; i < p.length; i++) //小圆点点击事件
+  {
+    p[i].a = i;
+    p[i].onclick = function () {
+      for (var y = 0; y < p.length; y++) {
+        p[y].className = '';
+      }
+      this.className = 'cur';
+      bg.style.marginTop = -innerHeight * this.a + 'px';
+      num = this.a; //将小圆点点击事件与鼠标滚轮事件绑定
+    }
+  }
+  // 统一火狐和非火狐的滚动距离
+  // function getDetail(e) {
+  //   if (e.wheelDelta) //非火狐适用
+  //   {
+  //     return e.wheelDelta;
+  //   } else if (e.detail) //火狐适用
+  //   {
+  //     return e.detail * -40;
+  //   }
+  // }
+</script>
+
+</html>

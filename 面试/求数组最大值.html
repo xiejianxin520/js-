@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>sda</button>
+  <button>sda</button>
+  <script>
+    let arr = [5, 6, 8, 9, 44, 5, 66, 1, 894]
+    //1.sort
+    //2.假设法
+    let maxNum = arr[0]
+    for (let i = 0; i < arr.length; i++) {
+      let cur = arr[i]
+      cur > maxNum ? maxNum = cur : null
+    }
+    console.log(maxNum);
+
+
+    //3第三
+    let maxNums = Math.max.apply(null, arr)
+    console.log(maxNums);
+
+    //第四
+    let maxss = Math.max(...arr)
+    console.log(maxss);
+  </script>
+
+  、、
+</body>
+
+</html>
